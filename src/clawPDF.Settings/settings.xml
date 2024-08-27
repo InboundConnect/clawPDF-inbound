@@ -493,6 +493,21 @@
 						<comment>Resolution of the TIFF files</comment>
 					</value>
 				</class>
+				<class name="InboundConnect" propertyName="InboundConnect" readonly="False" classtype="Class">
+					<comment>Upload the converted documents to Inbound Connect</comment>
+					<value name="Api" type="value" datatype="String" enumname="" defaultvalue="https://api.inboundconnect.com/api/services/app/externalintegration/UploadAttachmentToBooking">
+						<comment>The API Endpoint for the upload API</comment>
+					</value>
+					<value name="Enabled" type="value" datatype="Bool" enumname="" defaultvalue="false">
+						<comment>If true, this action will be executed</comment>
+					</value>
+					<value name="UserName" type="value" datatype="String" enumname="" defaultvalue="">
+						<comment>User name that is used to authenticate at the server</comment>
+					</value>
+					<value name="ApiKey" type="password" defaultvalue="">
+						<comment>ApiKey that is used to authenticate to Inbound Connect</comment>
+					</value>
+				</class>
 				<value name="AuthorTemplate" type="value" datatype="String" enumname="" defaultvalue="&lt;PrintJobAuthor&gt;">
 					<comment>Template for the Author field. This may contain tokens.</comment>
 				</value>

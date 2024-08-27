@@ -34,7 +34,7 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
-    <SignAssembly>true</SignAssembly>
+    <SignAssembly>false</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
     <AssemblyOriginatorKeyFile>signClawPDF.pfx</AssemblyOriginatorKeyFile>
@@ -97,6 +97,7 @@
     <Compile Include="Enums\Theme.cs" />
     <Compile Include="Enums\TiffColor.cs" />
     <Compile Include="Enums\UpdateInterval.cs" />
+    <Compile Include="InboundConnect.cs" />
     <Compile Include="Ftp.cs" />
     <Compile Include="Ghostscript.cs" />
     <Compile Include="JobPasswords.cs" />

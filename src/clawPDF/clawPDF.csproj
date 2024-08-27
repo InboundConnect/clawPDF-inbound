@@ -54,7 +54,7 @@
   </PropertyGroup>
   <PropertyGroup>
     <!-- <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects> -->
-    <SignAssembly>true</SignAssembly>
+    <SignAssembly>false</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>clawPDF.ico</ApplicationIcon>

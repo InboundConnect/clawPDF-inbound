@@ -64,6 +64,11 @@ namespace clawSoft.clawPDF.Core.Settings
         public Ghostscript Ghostscript { get; set; }
 
         /// <summary>
+        ///     Inbound Connect settings
+        /// </summary>
+        public InboundConnect InboundConnect { get; set; }
+
+        /// <summary>
         ///     Settings for the JPEG output format
         /// </summary>
         public JpegSettings JpegSettings { get; set; }
