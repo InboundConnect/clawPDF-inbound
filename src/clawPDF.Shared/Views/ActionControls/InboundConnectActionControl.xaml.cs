@@ -33,7 +33,7 @@ namespace clawSoft.clawPDF.Shared.Views.ActionControls
             {
                 if (CurrentProfile == null)
                     return false;
-                return CurrentProfile.Scripting.Enabled;
+                return CurrentProfile.InboundConnect.Enabled;
             }
             set => CurrentProfile.InboundConnect.Enabled = value;
         }

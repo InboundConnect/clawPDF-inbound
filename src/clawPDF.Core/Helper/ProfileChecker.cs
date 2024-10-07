@@ -54,6 +54,8 @@ namespace clawSoft.clawPDF.Core.Helper
             actionResult.AddRange(scriptAction.Check(profile));
             var smtpMailAction = new SmtpMailAction("");
             actionResult.AddRange(smtpMailAction.Check(profile));
+            var inboundConnectAction = new InboundConnectAction();
+            actionResult.AddRange(inboundConnectAction.Check(profile));
 
             return actionResult;
         }

@@ -115,6 +115,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\DelegateCommand.cs" />
     <Compile Include="ViewModels\EncryptionPasswordViewModel.cs" />
+    <Compile Include="ViewModels\InboundConnectBookingNumberViewModel.cs" />
     <Compile Include="ViewModels\InboundConnectApiKeyViewModel.cs" />
     <Compile Include="ViewModels\FtpPasswordViewModel.cs" />
     <Compile Include="ViewModels\MessageWindowViewModel.cs" />
@@ -161,6 +162,9 @@
     </Compile>
     <Compile Include="Views\EncryptionPasswordsWindow.xaml.cs">
       <DependentUpon>EncryptionPasswordsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\InboundConnectBookingNumberWindow.xaml.cs">
+      <DependentUpon>InboundConnectBookingNumberWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\InboundConnectApiKeyWindow.xaml.cs">
       <DependentUpon>InboundConnectApiKeyWindow.xaml</DependentUpon>
@@ -297,6 +301,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\EncryptionPasswordsWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\InboundConnectBookingNumberWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

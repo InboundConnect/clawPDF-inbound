@@ -176,6 +176,7 @@ namespace clawSoft.clawPDF.Core.Settings
             EmailClient = new EmailClient();
             EmailSmtp = new EmailSmtp();
             Ftp = new Ftp();
+            InboundConnect = new InboundConnect();
             Ghostscript = new Ghostscript();
             JpegSettings = new JpegSettings();
             PdfSettings = new PdfSettings();
@@ -207,6 +208,7 @@ namespace clawSoft.clawPDF.Core.Settings
             EmailClient.ReadValues(data, path + @"EmailClient\");
             EmailSmtp.ReadValues(data, path + @"EmailSmtp\");
             Ftp.ReadValues(data, path + @"Ftp\");
+            InboundConnect.ReadValues(data, path + @"InboundConnect\");
             Ghostscript.ReadValues(data, path + @"Ghostscript\");
             JpegSettings.ReadValues(data, path + @"JpegSettings\");
             PdfSettings.ReadValues(data, path + @"PdfSettings\");
@@ -310,6 +312,7 @@ namespace clawSoft.clawPDF.Core.Settings
             EmailClient.StoreValues(data, path + @"EmailClient\");
             EmailSmtp.StoreValues(data, path + @"EmailSmtp\");
             Ftp.StoreValues(data, path + @"Ftp\");
+            InboundConnect.StoreValues(data, path + @"InboundConnect\");
             Ghostscript.StoreValues(data, path + @"Ghostscript\");
             JpegSettings.StoreValues(data, path + @"JpegSettings\");
             PdfSettings.StoreValues(data, path + @"PdfSettings\");
@@ -343,6 +346,7 @@ namespace clawSoft.clawPDF.Core.Settings
             copy.EmailClient = EmailClient.Copy();
             copy.EmailSmtp = EmailSmtp.Copy();
             copy.Ftp = Ftp.Copy();
+            copy.InboundConnect = InboundConnect.Copy();
             copy.Ghostscript = Ghostscript.Copy();
             copy.JpegSettings = JpegSettings.Copy();
             copy.PdfSettings = PdfSettings.Copy();
@@ -379,6 +383,7 @@ namespace clawSoft.clawPDF.Core.Settings
             if (!EmailClient.Equals(v.EmailClient)) return false;
             if (!EmailSmtp.Equals(v.EmailSmtp)) return false;
             if (!Ftp.Equals(v.Ftp)) return false;
+            if (!InboundConnect.Equals(v.InboundConnect)) return false;
             if (!Ghostscript.Equals(v.Ghostscript)) return false;
             if (!JpegSettings.Equals(v.JpegSettings)) return false;
             if (!PdfSettings.Equals(v.PdfSettings)) return false;
@@ -421,6 +426,8 @@ namespace clawSoft.clawPDF.Core.Settings
             sb.AppendLine(EmailSmtp.ToString());
             sb.AppendLine("[Ftp]");
             sb.AppendLine(Ftp.ToString());
+            sb.AppendLine("[InboundConnect]");
+            sb.AppendLine(InboundConnect.ToString());
             sb.AppendLine("[Ghostscript]");
             sb.AppendLine(Ghostscript.ToString());
             sb.AppendLine("[JpegSettings]");

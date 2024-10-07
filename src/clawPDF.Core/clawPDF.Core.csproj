@@ -74,6 +74,7 @@
   <ItemGroup>
     <Compile Include="Actions\ActionResult.cs" />
     <Compile Include="Actions\EMailClientAction.cs" />
+    <Compile Include="Actions\InboundConnectAction.cs" />
     <Compile Include="Actions\FtpAction.cs" />
     <Compile Include="Actions\ICheckable.cs" />
     <Compile Include="Actions\SmtpMailAction.cs" />

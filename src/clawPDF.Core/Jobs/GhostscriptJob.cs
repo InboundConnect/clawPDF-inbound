@@ -129,6 +129,13 @@ namespace clawSoft.clawPDF.Core.Jobs
                 Logger.Trace("Ftp-Action added");
             }
 
+            if (Profile.InboundConnect.Enabled)
+            {
+                var inboundConenctAction = new InboundConnectAction();
+                AddAction(inboundConenctAction);
+                Logger.Trace("InboundConnect-Action added");
+            }
+
             /*if (Profile.AttachMe.Enable)
             {
                 var attachMeAction = new AttachMeAction();

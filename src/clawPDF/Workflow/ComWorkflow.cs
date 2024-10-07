@@ -1,9 +1,12 @@
 ﻿using System;
+using System.Configuration;
 using System.Runtime.InteropServices;
 using clawSoft.clawPDF.Core.Actions;
 using clawSoft.clawPDF.Core.Jobs;
 using clawSoft.clawPDF.Core.Settings;
 using clawSoft.clawPDF.Shared.Helper;
+using clawSoft.clawPDF.Shared.ViewModels;
+using clawSoft.clawPDF.Shared.Views;
 
 namespace clawSoft.clawPDF.Workflow
 {
@@ -54,6 +57,29 @@ namespace clawSoft.clawPDF.Workflow
             Job.Passwords.FtpPassword = Job.Profile.Ftp.Password;
 
             return true;
+        }
+
+        protected override bool QueryInboundConnectApiKey()
+        {
+            Job.Passwords.InboundConnectApiKey = Job.Profile.InboundConnect.ApiKey;
+            return true;
+        }
+
+        protected override bool CaptureInboundConnectBookingNumber()
+        {
+            var pwWindow = new InboundConnectBookingNumberWindow();
+            pwWindow.ShowDialogTopMost();
+
+            if (pwWindow.Response == InboundConnectBookingNumberResponse.OK)
+            {
+                Job.Passwords.InboundConnectBookingNumber = pwWindow.InboundConnectBookingNumber;
+                return true;
+            }
+
+            Cancel = true;
+            Logger.Warn("Cancelled the Inbound Connect Api Key dialog. No PDF will be created.");
+            WorkflowStep = WorkflowStep.AbortedByUser;
+            return false;
         }
 
         protected override void NotifyUserAboutFailedJob()

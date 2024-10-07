@@ -27,6 +27,7 @@ namespace clawSoft.clawPDF.Workflow
         SetSignaturePassword,
         SetSmtpPassword,
         SetFtpPassword,
+        SetInboundConnectApiKey,
         Convert,
         AbortedByUser,
         Finished
@@ -92,6 +93,10 @@ namespace clawSoft.clawPDF.Workflow
         /// </summary>
         /// <returns>A QueryMailPassword delegate that handles everything</returns>
         protected abstract bool QueryFtpPassword();
+
+        protected abstract bool QueryInboundConnectApiKey();
+
+        protected abstract bool CaptureInboundConnectBookingNumber();
 
         /// <summary>
         ///     If the Job failed, this method is called to notify the user about the error
@@ -254,6 +259,24 @@ namespace clawSoft.clawPDF.Workflow
                 if (!QueryFtpPassword() || Cancel)
                 {
                     Logger.Error("Canceled setting password for email over SMTP. No PDF will be created.");
+                    return false;
+                }
+            }
+
+            if (Job.Profile.InboundConnect.Enabled)
+            {
+                WorkflowStep = WorkflowStep.SetInboundConnectApiKey;
+
+                Logger.Debug("Querying Inbound Connect Api Key");
+                if (!QueryInboundConnectApiKey() || Cancel)
+                {
+                    Logger.Error("Canceled setting api key for Inbound Connect. No PDF will be created.");
+                    return false;
+                }
+
+                if (!CaptureInboundConnectBookingNumber() || Cancel)
+                {
+                    Logger.Error("Canceled setting booking number for Inbound Connect. No PDF will be created.");
                     return false;
                 }
             }

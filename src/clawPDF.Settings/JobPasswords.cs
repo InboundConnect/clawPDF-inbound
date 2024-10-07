@@ -7,5 +7,7 @@
         public string PdfSignaturePassword { get; set; }
         public string SmtpPassword { get; set; }
         public string FtpPassword { get; set; }
+        public string InboundConnectApiKey { get; set; }
+        public string InboundConnectBookingNumber { get; set; }
     }
 }

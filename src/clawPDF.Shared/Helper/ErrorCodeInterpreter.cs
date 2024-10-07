@@ -385,6 +385,40 @@ namespace clawSoft.clawPDF.Shared.Helper
                         "Error while uploading file to FTP server.");
                     break;
 
+                //Inbound Connect API Errors
+                case 66999:
+                    errorMessage = TranslationHelper.TranslatorInstance.GetTranslation("ErrorCodes", errorCodeString,
+                        "Exception while uploading PDF to Inbound Connect.");
+                    break;
+                case 66100:
+                    errorMessage = TranslationHelper.TranslatorInstance.GetTranslation("ErrorCodes", errorCodeString,
+                    "No Inbound Connect API Endpoint specified.");
+                    break;
+                case 66101:
+                    errorMessage = TranslationHelper.TranslatorInstance.GetTranslation("ErrorCodes", errorCodeString,
+                    "No Inbound Connect API Username specified.");
+                    break;
+                case 66109:
+                    errorMessage = TranslationHelper.TranslatorInstance.GetTranslation("ErrorCodes", errorCodeString,
+                    "No Inbound Connect API Key specified and AutoSave is enabled.");
+                    break;
+                case 66102:
+                    errorMessage = TranslationHelper.TranslatorInstance.GetTranslation("ErrorCodes", errorCodeString,
+                    "No Inbound Connect API Key specified.");
+                    break;
+                case 66103:
+                    errorMessage = TranslationHelper.TranslatorInstance.GetTranslation("ErrorCodes", errorCodeString,
+                    "Error while posting PDF to Inbound Connect.");
+                    break;
+                case 66104:
+                    errorMessage = TranslationHelper.TranslatorInstance.GetTranslation("ErrorCodes", errorCodeString,
+                    "Exception while uploading PDF to Inbound Connect.");
+                    break;
+                case 66120:
+                    errorMessage = TranslationHelper.TranslatorInstance.GetTranslation("ErrorCodes", errorCodeString,
+                    "No Inbound Connect Booking Number specified in action.");
+                    break;
+
                 // Attach.ME action
                 case 20001:
                     errorMessage = TranslationHelper.TranslatorInstance.GetTranslation("ErrorCodes", errorCodeString,

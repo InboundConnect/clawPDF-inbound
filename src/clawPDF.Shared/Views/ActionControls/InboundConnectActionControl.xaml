@@ -14,7 +14,6 @@
             <TextBlock Name="ServerText">Inbound Connect API:</TextBlock>
         </Label>
         <DockPanel>
-            <Label DockPanel.Dock="Left" FontWeight="Bold" Margin="5 0 5 0">ftp://</Label>
             <TextBox Text="{Binding CurrentProfile.InboundConnect.Api}" VerticalAlignment="Center" Height="24" Foreground="{StaticResource ControlDefaultForeground}" Background="{StaticResource ContainerBackground}" />
         </DockPanel>
         <Label>

@@ -4,6 +4,8 @@ using System.Windows;
 using clawSoft.clawPDF.Core.Actions;
 using clawSoft.clawPDF.Core.Jobs;
 using clawSoft.clawPDF.Core.Settings;
+using clawSoft.clawPDF.Shared.ViewModels;
+using clawSoft.clawPDF.Shared.Views;
 using clawSoft.clawPDF.Utilities;
 using clawSoft.clawPDF.Utilities.Registry;
 
@@ -76,6 +78,53 @@ namespace clawSoft.clawPDF.Workflow
             Job.Passwords.FtpPassword = Job.Profile.Ftp.Password;
 
             return true;
+        }
+
+        protected override bool QueryInboundConnectApiKey()
+        {
+            if (!string.IsNullOrEmpty(Job.Profile.InboundConnect.ApiKey))
+            {
+                Job.Passwords.InboundConnectApiKey = Job.Profile.InboundConnect.ApiKey;
+                return true;
+            }
+
+            var pwWindow = new InboundConnectApiKeyWindow(InboundConnectApiKeyMiddleButton.Skip);
+            pwWindow.ShowDialogTopMost();
+
+            if (pwWindow.Response == InboundConnectApiKeyResponse.OK)
+            {
+                Job.Passwords.InboundConnectApiKey = pwWindow.InboundConnectApiKey;
+                return true;
+            }
+
+            if (pwWindow.Response == InboundConnectApiKeyResponse.Skip)
+            {
+                Job.Profile.PdfSettings.Signature.Enabled = false;
+                Logger.Info("User skipped Inbound Connect Api Key. Upload disabled.");
+                return true;
+            }
+
+            Cancel = true;
+            Logger.Warn("Cancelled the Inbound Connect Api Key dialog. No PDF will be created.");
+            WorkflowStep = WorkflowStep.AbortedByUser;
+            return false;
+        }
+
+        protected override bool CaptureInboundConnectBookingNumber()
+        {
+            var pwWindow = new InboundConnectBookingNumberWindow();
+            pwWindow.ShowDialogTopMost();
+
+            if (pwWindow.Response == InboundConnectBookingNumberResponse.OK)
+            {
+                Job.Passwords.InboundConnectBookingNumber = pwWindow.InboundConnectBookingNumber;
+                return true;
+            }
+
+            Cancel = true;
+            Logger.Warn("Cancelled the Inbound Connect Api Key dialog. No PDF will be created.");
+            WorkflowStep = WorkflowStep.AbortedByUser;
+            return false;
         }
 
         protected override bool QueryEncryptionPasswords()
