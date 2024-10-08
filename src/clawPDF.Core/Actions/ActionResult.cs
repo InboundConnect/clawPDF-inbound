@@ -7,6 +7,7 @@ namespace clawSoft.clawPDF.Core.Actions
 {
     public class ActionResult : List<int>
     {
+        public string CustomErrorMessage { get; set; }
         public ActionResult()
         {
         }
@@ -19,6 +20,12 @@ namespace clawSoft.clawPDF.Core.Actions
         public ActionResult(int actionId, int internalErrorCode)
         {
             Add(actionId, internalErrorCode);
+        }
+
+        public ActionResult(int actionId, int internalErrorCode, string customErrorMessage)
+        {
+            Add(actionId, internalErrorCode);
+            CustomErrorMessage = customErrorMessage;
         }
 
         public bool Success => Count == 0;

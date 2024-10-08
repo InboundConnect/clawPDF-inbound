@@ -465,7 +465,7 @@ namespace clawSoft.clawPDF.Workflow
             if (actionResult.Success)
                 return true;
             var caption = _translator.GetTranslation("InteractiveWorkflow", "Error", "Error");
-            var opener = _translator.GetTranslation("InteractiveWorkflow", "AnErrorOccured", "An error occured:");
+            var opener = _translator.GetTranslation("InteractiveWorkflow", "AnErrorOccurred", "An error occured:");
             var errorText = ErrorCodeInterpreter.GetErrorText(actionResult[0], true);
             MessageWindow.ShowTopMost(opener + "\r\n" + errorText, caption, MessageWindowButtons.OK,
                 MessageWindowIcon.Error);

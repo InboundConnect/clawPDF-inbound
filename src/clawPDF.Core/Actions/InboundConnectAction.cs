@@ -1,5 +1,6 @@
 ﻿using clawSoft.clawPDF.Core.Jobs;
 using clawSoft.clawPDF.Core.Settings;
+using Newtonsoft.Json;
 using NLog;
 using System;
 using System.IO;
@@ -125,7 +126,27 @@ namespace clawSoft.clawPDF.Core.Actions
                         return new ActionResult(ActionId, 103);
                     }
                 }
+                catch (WebException ex)
+                {
+                    Logger.Error("Exception while uploading attachment to Inbound Connect:\r\n" + ex.Message);
+                    if (ex.Status == WebExceptionStatus.ProtocolError)
+                    {
+                        var response = (HttpWebResponse)ex.Response;
+                        Logger.Error("Inbound Connect upload failed with status code: " + response.StatusCode);
+                        using (var streamReader = new StreamReaderWrapFactory().Create(response.GetResponseStream()))
+                        {
+                            var result = streamReader.ReadToEnd();
+                            Logger.Error($"Error response: {result}");
+                            var json = JsonConvert.DeserializeObject<dynamic>(result);
+                            if (json?.error?.message != null)
+                            {
+                                return new ActionResult(ActionId, 104, json.error.message.ToString());
+                            }
 
+                        }
+                    }
+                    return new ActionResult(ActionId, 104);
+                }
                 catch (Exception ex)
                 {
                     Logger.Error("Exception while uploading attachment to Inbound Connect:\r\n" + ex.Message);

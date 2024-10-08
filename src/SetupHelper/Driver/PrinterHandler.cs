@@ -35,7 +35,7 @@ namespace clawSoft.clawPDF.SetupHelper.Driver
         #endregion Printer Driver Win32 API Constants
 
         private const string ENVIRONMENT = null;
-        private const string PRINTERNAME = "clawPDF";
+        private const string PRINTERNAME = "InboundConnectPrinter";
         private const string DRIVERNAME = "clawPDF Virtual Printer";
         private const string HARDWAREID = "clawPDF_Driver";
         private const string PORTMONITOR = "CLAWMON";

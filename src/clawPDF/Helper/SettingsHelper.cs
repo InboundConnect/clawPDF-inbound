@@ -209,6 +209,11 @@ namespace clawSoft.clawPDF.Helper
                 defaultProfile = new ConversionProfile();
                 defaultProfile.Name = "<Default Profile>";
                 defaultProfile.Guid = ProfileGuids.DEFAULT_PROFILE_GUID;
+
+                defaultProfile.InboundConnect.Enabled = true;
+                defaultProfile.InboundConnect.Api = "https://api.inboundconnect.com/api/services/app/externalintegration/UploadAttachmentToBooking";
+                defaultProfile.InboundConnect.UserName = "<enter your api username here>";
+
                 settings.ConversionProfiles.Add(defaultProfile);
             }
 
@@ -229,7 +234,7 @@ namespace clawSoft.clawPDF.Helper
 
             #region add default profiles
 
-            //HighComressionProfile
+            //HighCompressionProfile
             var highCompressionProfile = new ConversionProfile();
             highCompressionProfile.Name = "High Compression (small files)";
             highCompressionProfile.Guid = ProfileGuids.HIGH_COMPRESSION_PROFILE_GUID;

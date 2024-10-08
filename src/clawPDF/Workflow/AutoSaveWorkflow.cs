@@ -4,10 +4,12 @@ using System.Windows;
 using clawSoft.clawPDF.Core.Actions;
 using clawSoft.clawPDF.Core.Jobs;
 using clawSoft.clawPDF.Core.Settings;
+using clawSoft.clawPDF.Shared.Helper;
 using clawSoft.clawPDF.Shared.ViewModels;
 using clawSoft.clawPDF.Shared.Views;
 using clawSoft.clawPDF.Utilities;
 using clawSoft.clawPDF.Utilities.Registry;
+using pdfforge.DynamicTranslator;
 
 namespace clawSoft.clawPDF.Workflow
 {
@@ -17,6 +19,8 @@ namespace clawSoft.clawPDF.Workflow
     /// </summary>
     internal class AutoSaveWorkflow : ConversionWorkflow
     {
+        private readonly Translator _translator = TranslationHelper.Instance.TranslatorInstance;
+
         /// <summary>
         ///     Create a new Workflow object with the given job info
         /// </summary>
@@ -46,7 +50,7 @@ namespace clawSoft.clawPDF.Workflow
             {
                 outputFolder = FileUtil.Instance.MakeValidFolderName(tr.ReplaceTokens(Job.Profile.AutoSave.TargetDirectory));
             }
-                
+
             var filePath = Path.Combine(outputFolder, Job.ComposeOutputFilename());
 
             try
@@ -149,6 +153,18 @@ namespace clawSoft.clawPDF.Workflow
 
         protected override bool EvaluateActionResult(ActionResult actionResult)
         {
+            if (actionResult.Success)
+                return true;
+            var caption = _translator.GetTranslation("InteractiveWorkflow", "Error", "Error");
+            var opener = _translator.GetTranslation("InteractiveWorkflow", "AnErrorOccurred", "An error occurred:");
+            var errorText = ErrorCodeInterpreter.GetErrorText(actionResult[0], true);
+            if (!string.IsNullOrWhiteSpace(actionResult.CustomErrorMessage))
+            {
+                errorText = actionResult.CustomErrorMessage;
+            }
+            MessageWindow.ShowTopMost(opener + "\r\n" + errorText, caption, MessageWindowButtons.OK,
+                MessageWindowIcon.Error);
+
             return actionResult.Success;
         }
 
