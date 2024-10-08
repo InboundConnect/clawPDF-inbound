@@ -1,4 +1,4 @@
-# Inbound Conenct version
+# Inbound Conenct Version
 
 Inbound Connect have forked and modified the original clawPDF software to provide integration of clawPDF with Inbound Connect
 https://github.com/clawsoftware/clawPDF
