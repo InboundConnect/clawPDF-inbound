@@ -1,3 +1,15 @@
+# Inbound Conenct version
+
+Inbound Connect have forked and modified the original clawPDF software to provide integration of clawPDF with Inbound Connect
+https://github.com/clawsoftware/clawPDF
+
+Modifications:
+
+Introduction of an Send to Inbound Connect post PDF print action.
+
+This copy of the software is published as per the original license and available for all.
+
+
 # clawPDF - Virtual PDF/OCR/Image (Network) Printer
 
 ClawPDF may seem like yet another Virtual PDF/OCR/Image Printer, but it actually comes packed with features that are typically found in enterprise solutions. With clawPDF, you can create documents in various formats, including PDF/A-1b, PDF/A-2b, PDF/A-3b, PDF/X, PDF/Image, OCR, SVG, PNG, JPEG, TIF, and TXT. You also have easy access to metadata and can remove it before sharing a document. In addition, you can protect your documents with a password and encrypt them with up to 256-bit AES.
